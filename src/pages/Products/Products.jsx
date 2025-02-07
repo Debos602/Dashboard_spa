@@ -176,10 +176,8 @@ const Products = () => {
 
     return (
         <section className="px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex  flex-col sm:flex-row items-center justify-between w-full max-w-[calc(100vw-315px)]">
-                <h1 className="text-2xl font-bold mb-6 text-gray-950">
-                    Products
-                </h1>
+            <div className="flex  items-center justify-between gap-5 w-full md:max-w-[calc(100vw-315px)] mb-6">
+                <h1 className="text-2xl font-bold  text-gray-950">Products</h1>
                 <button
                     className="border btn px-4 py-2 rounded-md bg-green-600 text-white hover:bg-green-700 duration-300"
                     onClick={() => setIsModalOpen(true)}
