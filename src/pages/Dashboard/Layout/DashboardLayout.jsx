@@ -4,10 +4,10 @@ import Dashbar from "../Dashbar/Dashbar";
 
 const AdminsDashboard = () => {
     return (
-        <div className="flex">
+        <div className="flex wrap">
             <Sidebar />
             <div
-                className=" grow bg-gray-100 text-amber-950
+                className=" w-[calc(100%-300px)] grow bg-gray-100 text-amber-950
         dark:bg-gray-900 dark:text-white"
             >
                 <Dashbar />

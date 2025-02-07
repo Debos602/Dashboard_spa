@@ -23,7 +23,7 @@ const Sidebar = () => {
         return `${baseClasses} ${activeClasses}`;
     };
     return (
-        <div className="bg-gray-100 text-gray-950 text-base w-16 md:min-w-64 border-r border-gray-950 dark:border-gray-600 dark:bg-gray-900 dark:text-white">
+        <div className="bg-gray-100 text-gray-950 text-base w-16 md:min-w-[300px] border-r border-gray-950 dark:border-gray-600 dark:bg-gray-900 dark:text-white">
             <div className="sticky top-0 left-0">
                 <div className="flex items-center justify-center h-16 md:h-24 bg-gray-950 ">
                     <Link to="/" className="flex items-center">

@@ -25,9 +25,7 @@ const Products = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch(
-                    "https://api.restful-api.dev/objects"
-                );
+                const response = await fetch("product.json");
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");
                 }
@@ -315,20 +313,26 @@ const Products = () => {
             )}
 
             {/* Product Table */}
-            <div className="overflow-x-auto w-full max-w-[calc(100vw-315px)]">
+            <div className="overflow-x-auto max-w-full">
                 <table className="w-full bg-white border border-gray-200 rounded-lg">
                     <thead className="w-full">
                         <tr className="bg-gray-100">
-                            <th className="py-2 px-4 bg-gray-950 border-b border-gray-200 text-left text-[18px] font-semibold text-gray-100">
+                            <th className="py-2 px-4 min-w-[60px] bg-gray-950 border-b border-gray-200 text-left text-[18px] font-semibold text-gray-100">
                                 ID
                             </th>
-                            <th className="py-2 px-4 bg-gray-950 border-b border-gray-200 text-left text-[18px] font-semibold text-gray-100">
+                            <th className="py-2 px-4 min-w-[200px] bg-gray-950 border-b border-gray-200 text-left text-[18px] font-semibold text-gray-100">
                                 Name
                             </th>
-                            {keys.slice(0, 10).map((key) => (
+                            {keys.slice(0, 10).map((key, index) => (
+                                // for the first index min width should be 200px and for the rest of them width should be 100px
+
                                 <th
                                     key={key}
-                                    className="py-2 bg-gray-950 px-4 border-b border-gray-200 text-left text-[18px] font-semibold text-gray-100"
+                                    className={`py-2 ${
+                                        index === 0
+                                            ? "min-w-[150px]"
+                                            : "min-w-[100px]"
+                                    } bg-gray-950 px-4 border-b border-gray-200 text-left text-[18px] font-semibold text-gray-100`}
                                 >
                                     {key}
                                 </th>
