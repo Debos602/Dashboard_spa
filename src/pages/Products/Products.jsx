@@ -3,6 +3,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { useForm } from "react-hook-form";
 import "./Product.css"; // Ensure you have this CSS file for custom styles
 import { toast } from "sonner";
+import { gsap } from "gsap";
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -12,7 +13,7 @@ const Products = () => {
     const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false); // State for details modal
     const [selectedProduct, setSelectedProduct] = useState(null); // State for selected product
     const modalRef = useRef(null);
-
+    const cardRefs = useRef([]);
     const {
         register,
         handleSubmit,
@@ -32,6 +33,13 @@ const Products = () => {
                 }
                 const data = await response.json();
                 setProducts(data);
+                gsap.from(cardRefs.current, {
+                    opacity: 1,
+                    y: 50,
+                    stagger: 0.1,
+                    duration: 0.9,
+                    ease: "power2.out",
+                });
             } catch (error) {
                 setError(error.message);
             } finally {
@@ -332,7 +340,11 @@ const Products = () => {
                     </thead>
                     <tbody>
                         {products.map((product, index) => (
-                            <tr key={product.id} className="hover:bg-gray-50">
+                            <tr
+                                key={product.id}
+                                className="hover:bg-gray-50"
+                                ref={(el) => (cardRefs.current[index] = el)}
+                            >
                                 <td className="py-2 px-4 border-b border-gray-200 text-[18px] text-gray-950">
                                     {index + 1}.
                                 </td>
